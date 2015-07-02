@@ -1,0 +1,85 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Autodiscovery page",
+    "line": 1,
+    "description": "",
+    "id": "autodiscovery-page",
+    "uri": "features/autodiscovery.feature",
+    "elements": [
+      {
+        "keyword": "Scenario",
+        "name": "Adding Hosts",
+        "line": 14,
+        "description": "",
+        "tags": [
+          {
+            "name": "@s3",
+            "line": 13
+          }
+        ],
+        "id": "autodiscovery-page;adding-hosts",
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I am on AutoDiscovery Page",
+            "line": 15,
+            "match": {
+              "location": "features/step_definitions/autodiscovery_my_steps.rb:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5958734017
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I search for host by discovery definition \"Testhost2\",mode \"Auto-Commit\",filter \"Testhost4\"",
+            "line": 16,
+            "match": {
+              "arguments": [
+                {
+                  "offset": 43,
+                  "val": "Testhost2"
+                },
+                {
+                  "offset": 60,
+                  "val": "Auto-Commit"
+                },
+                {
+                  "offset": 81,
+                  "val": "Testhost4"
+                }
+              ],
+              "location": "features/step_definitions/autodiscovery_my_steps.rb:20"
+            },
+            "result": {
+              "status": "failed",
+              "error_message": "undefined method `discname_element=' for #<AutoDiscoveryPage:0xa5e103c> (NoMethodError)\n./lib/pages/autodiscovery_page_my.rb:47:in `disc_host'\n./features/step_definitions/autodiscovery_my_steps.rb:22:in `block (2 levels) in <top (required)>'\n./features/step_definitions/autodiscovery_my_steps.rb:21:in `/^I search for host by discovery definition \"(.+?)\",mode \"(.+?)\",filter \"(.+?)\"$/'\nfeatures/autodiscovery.feature:16:in `Then I search for host by discovery definition \"Testhost2\",mode \"Auto-Commit\",filter \"Testhost4\"'",
+              "duration": 150371005
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I wait for 5 seconds",
+            "line": 17,
+            "match": {
+              "location": "features/step_definitions/Login_steps.rb:7"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 3508634
+            },
+            "embeddings": [
+              {
+                "mime_type": "image/png",
+                "data": "Li9zY3JlZW5zaG90cy9GQUlMRURfQWRkaW5nX0hvc3RzXzIwMTUtMDctMDFUMTA6MTk6MDArMDU6MzAucG5n"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

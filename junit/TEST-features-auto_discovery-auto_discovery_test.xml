@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="44" name="Auto Discovery" skipped="0" tests="44" time="5.857849">
+<testcase classname="Auto Discovery" name="Display Build and version" time="0.203092">
+  <failure message="failed Display Build and version" type="failed">
+    <![CDATA[Scenario: Display Build and version
+
+Given Build and version
+
+Message:
+]]>
+    <![CDATA[uninitialized constant DashboardPage (NameError)
+./features/step_definitions/user_management.rb:232:in `/^Build and version$/'
+features/auto_discovery/auto_discovery_test.feature:7:in `Given Build and version']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Duplicate definition filter" time="0.030377">
+  <failure message="failed Duplicate definition filter" type="failed">
+    <![CDATA[Scenario: Duplicate definition filter
+
+Given I am on the Auto Discovery page
+And I create a duplicate range-filter with name "test", type "include" and range "172.28.113.160-170"
+When I try to add the Range/Filter
+Then I should see the duplicate message error for "test"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:10:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Default Auto Discovery definition with list of addresses" time="0.033182">
+  <failure message="failed Default Auto Discovery definition with list of addresses" type="failed">
+    <![CDATA[Scenario: Default Auto Discovery definition with list of addresses
+
+Given I am on the Auto Discovery page
+And I use the default discovery definition
+And I add a list of hosts to this definition with name "List of Hosts", type "include" and range "172.28.113.202,172.28.113.210"
+And I change the mode to auto
+And I launch the Auto Discovery
+When I commit the results
+Then the hosts "172.28.113.202" and "172.28.113.214" for the filter "List of Hosts" should be visible in status viewer
+And I remove the hosts "172.28.113.202" - "eng-kvm-server" and "172.28.113.210" - "bernina"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:16:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Auto discover invalid range" time="0.025741">
+  <failure message="failed Auto discover invalid range" type="failed">
+    <![CDATA[Scenario: Auto discover invalid range
+
+Given I am on the Auto Discovery page
+And I add an address filter "invalid" of type "include" with range "172.28.113."
+When I launch the Auto Discovery
+Then I should see a correct auto discover without invalid range "invalid"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:26:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="No method definition error" time="0.029657">
+  <failure message="failed No method definition error" type="failed">
+    <![CDATA[Scenario: No method definition error
+
+Given I am on the Auto Discovery page
+And I create a discovery definition "test1" and select "test1" filter of type "include" and range "172.28.113.160-170"
+When I Uncheck definition methods
+And save the definition
+And I launch go
+Then I should see no method assign message error for "test1"
+And I remove filter "test1"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:32:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Address filter of type exclude" time="0.033619">
+  <failure message="failed Address filter of type exclude" type="failed">
+    <![CDATA[Scenario: Address filter of type exclude
+
+Given I am on the Auto Discovery page
+And I use the default discovery definition
+And I add an address filter "Exclude" of type "exclude" with range "172.28.113.209"
+And I add an address filter "Include" of type "include" with range "172.28.113.209-210"
+And I change the mode to auto
+And I launch the Auto Discovery
+When I commit the results
+Then I should see "172.28.113.210"-"bernina" but not the excluded host "172.28.113.209" in status viewer and host page
+And I remove the added hosts "Exclude" and "Include"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:41:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Auto Discovery with auto-commit" time="0.027788">
+  <failure message="failed Auto Discovery with auto-commit" type="failed">
+    <![CDATA[Scenario: Auto Discovery with auto-commit
+
+Given I am on the Auto Discovery page
+And I use the default discovery definition
+And I change the mode to auto commit
+And I add an address filter "auto-commit" of type "include" with range "172.28.113.161-162"
+When I start the discovery
+Then I should see the hosts "172.28.113.162" in Status viewer
+And I remove the filter "auto-commit" and the host "172.28.113.162"-"itmon-win"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:52:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Interactive Auto Discovery" time="0.034662">
+  <failure message="failed Interactive Auto Discovery" type="failed">
+    <![CDATA[Scenario: Interactive Auto Discovery
+
+Given I am on the Auto Discovery page
+And I use the default discovery definition
+And I add an address filter "interactive" of type "include" with range "172.28.113.189"
+And I change the mode to interactive
+And I launch the Auto Discovery with interactive mode
+When I select process records
+And I commit the results
+Then the Auto Discovery UI shows properly
+And I remove the filter "interactive" and the host "172.28.113.189"-"qa-ubuntu-12-04-64-2"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:62:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Edit record for discovered host" time="0.031885">
+  <failure message="failed Edit record for discovered host" type="failed">
+    <![CDATA[Scenario: Edit record for discovered host
+
+Given I am on the Auto Discovery page
+When I use the default discovery definition
+And I add an address filter "edit_host" of type "include" with range "172.28.113.189"
+And I change the mode to interactive
+And I launch the Auto Discovery with interactive mode
+And I edit the different parameters for host "qa-ubuntu-12-04-64-2"
+When I select process records and continue
+And I commit the results
+And the changes should be reflected on Status Viewer for host "172.72.172.172"-"qa-ubuntu-12-04-64-2" and Host Configuration page
+And I remove the filter "edit_host" and the host "172.72.172.172"-"qa-ubuntu-12-04-64-2-renamed"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:83:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify SNMP method" time="0.036445">
+  <failure message="failed Verify SNMP method" type="failed">
+    <![CDATA[Scenario: Verify SNMP method
+
+Given I am on the Auto Discovery page
+And I edit default discovery defintion
+And I "uncheck" Nmap and "check" SNMP definition method
+And I add an address filter "test_range" of type "include" with range "172.28.113.165-170"
+And I change the mode to interactive
+And I launch Auto Discovery
+Then the discovery should show results of SNMP only
+And I remove filter "test_range"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:96:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify Nmap method" time="0.030329">
+  <failure message="failed Verify Nmap method" type="failed">
+    <![CDATA[Scenario: Verify Nmap method
+
+Given I am on the Auto Discovery page
+And I edit default discovery defintion
+And I "check" Nmap and "uncheck" SNMP definition method
+And I add an address filter "test_range_1" of type "include" with range "172.28.113.168-174"
+And I change the mode to interactive
+And I launch Auto Discovery
+Then the discovery should show results of Nmap only
+And I remove filter "test_range_1"
+And I edit default discovery defintion
+And I "check" Nmap and "check" SNMP definition method
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:107:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify renaming a discovery definition in create mode and delete in edit mode" time="0.028080">
+  <failure message="failed Verify renaming a discovery definition in create mode and delete in edit mode" type="failed">
+    <![CDATA[Scenario: Verify renaming a discovery definition in create mode and delete in edit mode
+
+Given I am on the Auto Discovery page
+And I create a new auto discovery definition "test_1"
+And "rename" the definition "test_1"
+And save the definition
+Then the definition "test_1" should be "renamed"
+And "delete" the definition "test_1"
+Then the definition "test_1" should be "deleted"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:119:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify deleting a discovery definition in create mode" time="0.024505">
+  <failure message="failed Verify deleting a discovery definition in create mode" type="failed">
+    <![CDATA[Scenario: Verify deleting a discovery definition in create mode
+
+Given I am on the Auto Discovery page
+And I create a new auto discovery definition "test_2"
+And "delete" the definition "test_2"
+Then the definition "test_2" should be "deleted"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:129:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify renaming a discovery definition in edit mode" time="0.040086">
+  <failure message="failed Verify renaming a discovery definition in edit mode" type="failed">
+    <![CDATA[Scenario: Verify renaming a discovery definition in edit mode
+
+Given I am on the Auto Discovery page
+And I create a new auto discovery definition "test_3"
+And save the definition
+And I am on the Auto Discovery page
+And "edit" the definition "test_3"
+And "rename" the definition "test_3"
+And save the definition
+Then the definition "test_3" should be "renamed"
+And "delete" the definition "test_3"
+Then the definition "test_3" should be "deleted"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:136:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan timeouts for Nmap method (outline example : | Polite |)" time="0.191599">
+  <failure message="failed Verify different scan timeouts for Nmap method (outline example : | Polite |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan timeouts for Nmap method
+
+Example row: | Polite |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:149:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan timeouts for Nmap method (outline example : | Normal |)" time="0.205096">
+  <failure message="failed Verify different scan timeouts for Nmap method (outline example : | Normal |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan timeouts for Nmap method
+
+Example row: | Polite |
+
+Message:
+Example row: | Normal |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:149:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan timeouts for Nmap method (outline example : | Aggressive |)" time="0.242679">
+  <failure message="failed Verify different scan timeouts for Nmap method (outline example : | Aggressive |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan timeouts for Nmap method
+
+Example row: | Polite |
+
+Message:
+Example row: | Normal |
+
+Message:
+Example row: | Aggressive |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:149:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan timeouts for Nmap method (outline example : | Insane |)" time="0.197600">
+  <failure message="failed Verify different scan timeouts for Nmap method (outline example : | Insane |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan timeouts for Nmap method
+
+Example row: | Polite |
+
+Message:
+Example row: | Normal |
+
+Message:
+Example row: | Aggressive |
+
+Message:
+Example row: | Insane |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:149:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan types for Nmap method (outline example : | TCP CONNECT SCAN |)" time="0.210454">
+  <failure message="failed Verify different scan types for Nmap method (outline example : | TCP CONNECT SCAN |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan types for Nmap method
+
+Example row: | TCP CONNECT SCAN |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:168:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan types for Nmap method (outline example : | UDP SCAN |)" time="0.191865">
+  <failure message="failed Verify different scan types for Nmap method (outline example : | UDP SCAN |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan types for Nmap method
+
+Example row: | TCP CONNECT SCAN |
+
+Message:
+Example row: | UDP SCAN |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:168:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify different scan types for Nmap method (outline example : | TCP SYN SCAN |)" time="0.220883">
+  <failure message="failed Verify different scan types for Nmap method (outline example : | TCP SYN SCAN |)" type="failed">
+    <![CDATA[Scenario Outline: Verify different scan types for Nmap method
+
+Example row: | TCP CONNECT SCAN |
+
+Message:
+Example row: | UDP SCAN |
+
+Message:
+Example row: | TCP SYN SCAN |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:168:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Invalid validation for max hops and timeouts (outline example : | testing |)" time="0.188119">
+  <failure message="failed Invalid validation for max hops and timeouts (outline example : | testing |)" type="failed">
+    <![CDATA[Scenario Outline: Invalid validation for max hops and timeouts
+
+Example row: | testing |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:194:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Invalid validation for max hops and timeouts (outline example : | @#$%^&amp;* |)" time="0.223135">
+  <failure message="failed Invalid validation for max hops and timeouts (outline example : | @#$%^&amp;* |)" type="failed">
+    <![CDATA[Scenario Outline: Invalid validation for max hops and timeouts
+
+Example row: | testing |
+
+Message:
+Example row: | @#$%^&* |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:194:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete, Close and Cancel buttons on Automation page (outline example : | close |)" time="0.192327">
+  <failure message="failed Delete, Close and Cancel buttons on Automation page (outline example : | close |)" type="failed">
+    <![CDATA[Scenario Outline: Delete, Close and Cancel buttons on Automation page
+
+Example row: | close |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:211:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete, Close and Cancel buttons on Automation page (outline example : | cancel_rename |)" time="0.214791">
+  <failure message="failed Delete, Close and Cancel buttons on Automation page (outline example : | cancel_rename |)" type="failed">
+    <![CDATA[Scenario Outline: Delete, Close and Cancel buttons on Automation page
+
+Example row: | close |
+
+Message:
+Example row: | cancel_rename |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:211:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete, Close and Cancel buttons on Automation page (outline example : | cancel |)" time="0.197720">
+  <failure message="failed Delete, Close and Cancel buttons on Automation page (outline example : | cancel |)" type="failed">
+    <![CDATA[Scenario Outline: Delete, Close and Cancel buttons on Automation page
+
+Example row: | close |
+
+Message:
+Example row: | cancel_rename |
+
+Message:
+Example row: | cancel |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:211:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete, Close and Cancel buttons on Automation page (outline example : | delete |)" time="0.211834">
+  <failure message="failed Delete, Close and Cancel buttons on Automation page (outline example : | delete |)" type="failed">
+    <![CDATA[Scenario Outline: Delete, Close and Cancel buttons on Automation page
+
+Example row: | close |
+
+Message:
+Example row: | cancel_rename |
+
+Message:
+Example row: | cancel |
+
+Message:
+Example row: | delete |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:211:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Create a new automation schema (outline example : | schema_type |)" time="0.204682">
+  <failure message="failed Create a new automation schema (outline example : | schema_type |)" type="failed">
+    <![CDATA[Scenario Outline: Create a new automation schema
+
+Example row: | schema_type |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:224:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Create a new automation schema (outline example : | schema_template |)" time="0.205761">
+  <failure message="failed Create a new automation schema (outline example : | schema_template |)" type="failed">
+    <![CDATA[Scenario Outline: Create a new automation schema
+
+Example row: | schema_type |
+
+Message:
+Example row: | schema_template |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:224:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Create a new automation schema (outline example : | schema_type_template |)" time="0.198413">
+  <failure message="failed Create a new automation schema (outline example : | schema_type_template |)" type="failed">
+    <![CDATA[Scenario Outline: Create a new automation schema
+
+Example row: | schema_type |
+
+Message:
+Example row: | schema_template |
+
+Message:
+Example row: | schema_type_template |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:224:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Create new defintion from a new schema" time="0.035183">
+  <failure message="failed Create new defintion from a new schema" type="failed">
+    <![CDATA[Scenario: Create new defintion from a new schema
+
+Given I am on the Automation page
+And I create a new automation schema "schema_template_1"
+Then the schema "schema_template_1" should be successfully "created"
+And I am on the Auto Discovery page
+And I create a new discovery defintion using "schema_template_1"
+And I check the Nmap TCP definition method
+And save the definition
+And I add an address filter "new_defintion" of type "include" with range "172.28.113.161, 172.28.113.163"
+When I start the discovery
+Then the hosts "172.28.113.161" and "172.28.113.163" for the filter "new_defintion" should be visible in status viewer
+And I remove the hosts "172.28.113.161" - "qa-win-2k8-gdma" and "172.28.113.163" - "gw-logstash-02"
+And I remove filter "new_defintion"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:236:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify empty data source file" time="0.032788">
+  <failure message="failed Verify empty data source file" type="failed">
+    <![CDATA[Scenario: Verify empty data source file
+
+Given I am on the Automation page
+And I select the default schema
+And I view the data source file
+Then the data source file should not exist
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:251:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Verify data source file content upon disocvery" time="0.032627">
+  <failure message="failed Verify data source file content upon disocvery" type="failed">
+    <![CDATA[Scenario: Verify data source file content upon disocvery
+
+Given I am on the Auto Discovery page
+When I use the default discovery definition
+And I add an address filter "view_data_source" of type "include" with range "172.28.113.189"
+And I change the mode to interactive
+And I launch the Auto Discovery with interactive mode
+And I am on the Automation page
+And I select the default schema
+And I view the data source file
+Then the entry for the host "172.28.113.189" "qa-ubuntu-12-04-64-2" should exist in the data source file
+And I remove filter "view_data_source"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:258:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Create schema using automation schema template" time="0.030245">
+  <failure message="failed Create schema using automation schema template" type="failed">
+    <![CDATA[Scenario: Create schema using automation schema template
+
+Given I am on the Automation page
+And I create a new automation template "template1"
+And I save it as a template
+And I create an automation schema "new_schema" using template "template1"
+Then the schema "new_schema" should be successfully "created"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:271:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Rename an automation schema (outline example : | schema_type |)" time="0.186924">
+  <failure message="failed Rename an automation schema (outline example : | schema_type |)" type="failed">
+    <![CDATA[Scenario Outline: Rename an automation schema
+
+Example row: | schema_type |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:279:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Rename an automation schema (outline example : | schema_template |)" time="0.214082">
+  <failure message="failed Rename an automation schema (outline example : | schema_template |)" type="failed">
+    <![CDATA[Scenario Outline: Rename an automation schema
+
+Example row: | schema_type |
+
+Message:
+Example row: | schema_template |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:279:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Rename an automation schema (outline example : | schema_type_template |)" time="0.188751">
+  <failure message="failed Rename an automation schema (outline example : | schema_type_template |)" type="failed">
+    <![CDATA[Scenario Outline: Rename an automation schema
+
+Example row: | schema_type |
+
+Message:
+Example row: | schema_template |
+
+Message:
+Example row: | schema_type_template |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:279:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete an automation schema (outline example : | schema_type |)" time="0.185489">
+  <failure message="failed Delete an automation schema (outline example : | schema_type |)" type="failed">
+    <![CDATA[Scenario Outline: Delete an automation schema
+
+Example row: | schema_type |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:291:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete an automation schema (outline example : | schema_template |)" time="0.212432">
+  <failure message="failed Delete an automation schema (outline example : | schema_template |)" type="failed">
+    <![CDATA[Scenario Outline: Delete an automation schema
+
+Example row: | schema_type |
+
+Message:
+Example row: | schema_template |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:291:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Delete an automation schema (outline example : | schema_type_template |)" time="0.192269">
+  <failure message="failed Delete an automation schema (outline example : | schema_type_template |)" type="failed">
+    <![CDATA[Scenario Outline: Delete an automation schema
+
+Example row: | schema_type |
+
+Message:
+Example row: | schema_template |
+
+Message:
+Example row: | schema_type_template |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutomationPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:310:in `/^I am on the Automation page$/'
+features/auto_discovery/auto_discovery_test.feature:291:in `Given I am on the Automation page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Edit, Cancel and Disable Overrides redirection on Auto Configuration page (outline example : | edit |)" time="0.212040">
+  <failure message="failed Edit, Cancel and Disable Overrides redirection on Auto Configuration page (outline example : | edit |)" type="failed">
+    <![CDATA[Scenario Outline: Edit, Cancel and Disable Overrides redirection on Auto Configuration page
+
+Example row: | edit |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:303:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Edit, Cancel and Disable Overrides redirection on Auto Configuration page (outline example : | close_scan |)" time="0.193109">
+  <failure message="failed Edit, Cancel and Disable Overrides redirection on Auto Configuration page (outline example : | close_scan |)" type="failed">
+    <![CDATA[Scenario Outline: Edit, Cancel and Disable Overrides redirection on Auto Configuration page
+
+Example row: | edit |
+
+Message:
+Example row: | close_scan |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:303:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Edit, Cancel and Disable Overrides redirection on Auto Configuration page (outline example : | disable_overrides |)" time="0.202769">
+  <failure message="failed Edit, Cancel and Disable Overrides redirection on Auto Configuration page (outline example : | disable_overrides |)" type="failed">
+    <![CDATA[Scenario Outline: Edit, Cancel and Disable Overrides redirection on Auto Configuration page
+
+Example row: | edit |
+
+Message:
+Example row: | close_scan |
+
+Message:
+Example row: | disable_overrides |
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:303:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Auto Discovery" name="Enable Overrides on Auto Configuration page" time="0.032733">
+  <failure message="failed Enable Overrides on Auto Configuration page" type="failed">
+    <![CDATA[Scenario: Enable Overrides on Auto Configuration page
+
+Given I am on the Auto Discovery page
+When I use the default discovery definition
+And I add an address filter "overrides" of type "include" with range "172.28.113.165"
+And I change the mode to interactive
+And I launch the Auto Discovery with interactive mode
+And I Enable Overrides and modify the different parameters
+When I select process records
+And I commit the results
+Then changes should reflect on Status Viewer for host "172.28.113.165" "eng-selenium-test" and Host Configuration page
+And I remove the filter "overrides" and the host "172.28.113.165"-"eng-selenium-test"
+
+Message:
+]]>
+    <![CDATA[uninitialized constant AutodiscoveryPage (NameError)
+./features/step_definitions/auto_discovery_steps.rb:288:in `/^I am on the Auto Discovery page$/'
+features/auto_discovery/auto_discovery_test.feature:318:in `Given I am on the Auto Discovery page']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testsuite>

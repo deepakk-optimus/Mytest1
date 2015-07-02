@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="1" name="Autodiscovery page" skipped="0" tests="1" time="6.259451">
+<testcase classname="Autodiscovery page" name="Adding Hosts" time="6.259451">
+  <failure message="failed Adding Hosts" type="failed">
+    <![CDATA[Scenario: Adding Hosts
+
+Given I am on AutoDiscovery Page
+Then I search for host by discovery definition "Testhost2",mode "Auto-Commit",filter "Testhost4"
+Then I wait for 5 seconds
+
+Message:
+]]>
+    <![CDATA[undefined method `discname_element=' for #<AutoDiscoveryPage:0xa5e103c> (NoMethodError)
+./lib/pages/autodiscovery_page_my.rb:47:in `disc_host'
+./features/step_definitions/autodiscovery_my_steps.rb:22:in `block (2 levels) in <top (required)>'
+./features/step_definitions/autodiscovery_my_steps.rb:21:in `/^I search for host by discovery definition "(.+?)",mode "(.+?)",filter "(.+?)"$/'
+features/autodiscovery.feature:16:in `Then I search for host by discovery definition "Testhost2",mode "Auto-Commit",filter "Testhost4"']]>
+  </failure>
+  <system-out/>
+  <system-err/>
+</testcase>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testsuite>

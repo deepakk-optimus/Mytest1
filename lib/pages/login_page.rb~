@@ -1,0 +1,25 @@
+class LoginPage
+	def initialize()
+    	@b = Watir::Browser.new
+  	end
+	
+    include PageObject
+    
+    direct_url BASE_URL
+
+    @b.text_field :user, :name => 'josso_username'
+    @b.text_field :password, :name => 'josso_password'
+    @b.button :login, :value => 'Login'
+    
+    	link :knowledge_base, :text => /Knowledge Base/
+	link :case_manager, :text => /Case Manager/
+	link :forums, :text => /Forums/
+	link :groundwork, :text => /www.gwos.com/
+
+    def login_user(user,password)
+        self.user = user
+        self.password = password
+        self.login.click
+    end
+end
+ 
